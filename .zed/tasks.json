@@ -1,0 +1,9 @@
+[
+  {
+    "label": "run_cpp_file",
+    "command": "g++",
+    "args": ["$ZED_FILE", "-o", "$ZED_FILE.exe", "&&", "$ZED_FILE.exe"],
+    "shell": "system",
+    "reveal": "always",
+  },
+]
