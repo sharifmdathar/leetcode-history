@@ -4,7 +4,7 @@ using namespace std;
 class Solution
 {
 public:
-    void nextPermutation(vector<int> &nums)
+    static void nextPermutation(vector<int> &nums)
     {
         int idx = -1;
         int n = nums.size();
