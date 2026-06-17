@@ -29,12 +29,12 @@ public:
         unordered_map<long long, int> mp;
         int ans = INT_MIN;
         long long sm = 0;
-        for (int i = 0; i < arr.size(); i++)
+        for (long unsigned int i = 0; i < arr.size(); i++)
         {
             int x = arr[i];
             sm += x;
             if (sm == k)
-                ans = max(ans, i + 1);
+                ans = max(ans, (int)i + 1);
             long long req = sm - k;
             if (mp.find(req) != mp.end())
             {
@@ -47,9 +47,32 @@ public:
         return ans;
     }
 
+    int mySol(vector<int> &arr, int k)
+    {
+        int ans = 0;
+        int n = arr.size();
+        int l = 0, r = 0;
+        long long sm = arr[0];
+        while (r < n)
+        {
+            while (l <= r && sm > k)
+            {
+                sm -= arr[l];
+                l++;
+            }
+            if (sm == k)
+            {
+                ans = max(ans, r - l + 1);
+            }
+            if (r++ < n)
+                sm += arr[r];
+        }
+        return ans;
+    }
+
     int longestSubarrayWithSumK(vector<int> &arr, int k)
     {
-        return betterWIthPrefixSum(arr, k);
+        return mySol(arr, k);
     }
 };
 
